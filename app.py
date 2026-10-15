@@ -105,8 +105,8 @@ def gerar_pdf(
                 caminho_logo,
                 width=largura_desejada,
                 height=altura_proporcional
-            )
-        )
+                )
+        
 
     except:
         pass
