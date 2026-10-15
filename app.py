@@ -116,12 +116,21 @@ def gerar_pdf(
 
     # Título
 
-    elementos.append(
-        Paragraph(
-            f"<b>{titulo} | {canal} {regional} | {mes} {ano} </b>",
-            styles["Title"]
-        )
+    titulo_tabela = Table(
+        [[f"{titulo} | {canal} | {mes} {ano}"]],
+        colWidths=[18*cm]
     )
+    
+    titulo_tabela.setStyle(
+        TableStyle([
+            ("BACKGROUND", (0,0), (-1,-1), colors.HexColor("#005CB9")),
+            ("TEXTCOLOR", (0,0), (-1,-1), colors.white),
+            ("ALIGN", (0,0), (-1,-1), "CENTER"),
+            ("FONTSIZE", (0,0), (-1,-1), 16),
+        ])
+    )
+    
+    elementos.append(titulo_tabela)
 
     elementos.append(Spacer(1, 5))
 
