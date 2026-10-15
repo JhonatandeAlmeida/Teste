@@ -260,6 +260,7 @@ def gerar_pdf(
         estilo = [
             ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#005CB9")),
             ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+            ("ALIGN", (0, 0), (-1, -1), "CENTER"),
         ]
         
         for i in range(1, len(dados)):
