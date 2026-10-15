@@ -877,21 +877,21 @@ with col_direita:
             negocio
         )
 
-    pdf_file = gerar_pdf(
-        titulo=titulo,
-        mes=mes,
-        ano=ano,
-        mecanica_mes=mecanica_mes,
-        produtos=produtos,
-        logo=logo,
-        canal=canal,
-        negocio=negocio,
-        regional=regional
-    )
-    
-    st.download_button(
-        "📄 Exportar PDF",
-        data=pdf_file,
-        file_name=f"Calendario_{canal}_{regional}_{mes}_{ano}.pdf",
-        mime="application/pdf"
-    )
+pdf_file = gerar_pdf(
+    titulo=titulo,
+    mes=mes,
+    ano=ano,
+    mecanica_mes=mecanica_mes,
+    produtos=produtos,
+    logo=logo,
+    canal=canal,
+    negocio=negocio,
+    regional=regional
+)
+
+st.download_button(
+    "📄 Exportar PDF",
+    data=pdf_file,
+    file_name=f"Calendario_{canal}_{regional}_{mes}_{ano}.pdf",
+    mime="application/pdf"
+)
