@@ -22,6 +22,7 @@ from reportlab.lib.styles import getSampleStyleSheet
 from components.calendar import gerar_calendario
 from components.styles import load_css
 
+@st.cache_data
 def imagem_para_base64(caminho):
     with open(caminho, "rb") as img:
         return base64.b64encode(
@@ -519,7 +520,9 @@ for arquivo in os.listdir(PASTA_ORIGINAL):
         PASTA_PADRONIZADA,
         arquivo
     )
-
+    if os.path.exists(destino):
+        continue
+        
     try:
 
         imagem = padronizar_imagem(
