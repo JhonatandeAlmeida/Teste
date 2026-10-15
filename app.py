@@ -184,21 +184,19 @@ def gerar_pdf(
     
     for quinzena in sorted(quinzenas):
 
-        if quinzena == "PP":
-            elementos.append(
-                Paragraph(
-                    f"<b>POWER PACKS</b>",
-                    styles["Heading3"]
-                )
+        titulo_quinzena = (
+            "POWER PACKS"
+            if quinzena == "PP"
+            else f"{quinzena}ª QUINZENA"
+        )
+        
+        elementos.append(
+            Paragraph(
+                f"<b>{titulo_quinzena}</b>",
+                styles["Heading3"]
             )
-        else:
-            elementos.append(
-                Paragraph(
-                    f"<b>{quinzena}ª QUINZENA</b>",
-                    styles["Heading3"]
-                )
-            )
-
+        )
+      
         dados = [
             [
                 "SKU",
@@ -894,6 +892,6 @@ if st.button("📄 Exportar PDF"):
     st.download_button(
         "📄 Exportar PDF",
         data=pdf_file,
-        file_name=f"Calendario_{mes}_{ano}.pdf",
+        file_name=f"Calendario_{canal}_{mes}_{ano}.pdf",
         mime="application/pdf"
     )
