@@ -120,7 +120,7 @@ def gerar_pdf(
         [[
             f"{titulo} | {canal} | {mes} {ano}"
         ]],
-        colWidths=[3*cm, 15*cm]
+        colWidths=[18*cm]
     )
     
     cabecalho.setStyle(
