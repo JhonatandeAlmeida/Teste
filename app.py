@@ -132,7 +132,7 @@ def gerar_pdf(
     
     elementos.append(titulo_tabela)
 
-    elementos.append(Spacer(1, 5))
+    elementos.append(Spacer(1, 10))
 
     # Mecânica
 
