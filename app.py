@@ -96,11 +96,6 @@ def gerar_pdf(
             f"<b>{titulo} | {canal} {regional} | {mes} {ano} </b>",
             styles["Title"]
         )
-        PdfImage(
-                caminho_logo,
-                width=largura_desejada,
-                height=altura_proporcional
-            )
     )
 
     #elementos.append(Spacer(1, 10))
