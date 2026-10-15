@@ -173,13 +173,6 @@ def gerar_pdf(
 
     # Produtos
 
-    elementos.append(
-            Paragraph(
-                f"<b>{canal}</b>",
-                styles["Heading2"]
-            )
-        )
-
     df_canal = produtos.copy()
     
     quinzenas = sorted(
@@ -886,7 +879,7 @@ with col_direita:
         )
 
 
-if st.button("📄 Gerar PDF"):
+if st.button("📄 Exportar PDF"):
     pdf_file = gerar_pdf(
         titulo=titulo,
         mes=mes,
