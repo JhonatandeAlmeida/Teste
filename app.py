@@ -120,7 +120,7 @@ def gerar_pdf(
             logo_pdf,
             f"{titulo} | {canal} | {mes} {ano}"
         ]],
-        colWidths=[18*cm]
+        colWidths=[3*cm, 15*cm]
     )
     
     cabecalho.setStyle(
@@ -131,8 +131,8 @@ def gerar_pdf(
             ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
             ("FONTNAME", (0, 0), (-1, -1), "Helvetica-Bold"),
             ("FONTSIZE", (0, 0), (-1, -1), 18),
-            ("TOPPADDING", (0, 0), (-1, -1), 10),
-            ("BOTTOMPADDING", (0, 0), (-1, -1), 10),
+            ("TOPPADDING", (0, 0), (-1, -1), 8),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
             ("BOX", (0, 0), (-1, -1), 0, colors.white),
         ])
     )
