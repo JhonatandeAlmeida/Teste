@@ -116,26 +116,27 @@ def gerar_pdf(
 
     # Título
 
-    titulo_tabela = Table(
+    cabecalho = Table(
         [[f"{titulo} | {canal} | {mes} {ano}"]],
         colWidths=[18*cm]
     )
     
-    titulo_tabela.setStyle(
+    cabecalho.setStyle(
         TableStyle([
-            ("BACKGROUND", (0,0), (-1,-1), colors.HexColor("#005CB9")),
-            ("TEXTCOLOR", (0,0), (-1,-1), colors.white),
-            ("ALIGN", (0,0), (-1,-1), "CENTER"),
-            ("VALIGN", (0,0), (-1,-1), "MIDDLE"),
-            ("FONTSIZE", (0,0), (-1,-1), 14),
-            ("TOPPADDING", (0,0), (-1,-1), 8),
-            ("BOTTOMPADDING", (0,0), (-1,-1), 8),
+            ("BACKGROUND", (0, 0), (-1, -1), colors.HexColor("#005CB9")),
+            ("TEXTCOLOR", (0, 0), (-1, -1), colors.white),
+            ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+            ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+            ("FONTNAME", (0, 0), (-1, -1), "Helvetica-Bold"),
+            ("FONTSIZE", (0, 0), (-1, -1), 18),
+            ("TOPPADDING", (0, 0), (-1, -1), 10),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 10),
+            ("BOX", (0, 0), (-1, -1), 0, colors.white),
         ])
     )
     
-    elementos.append(titulo_tabela)
-
-    elementos.append(Spacer(1, 10))
+    elementos.append(cabecalho)
+    elementos.append(Spacer(1, 12))
 
     # Mecânica
 
