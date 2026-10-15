@@ -98,7 +98,7 @@ def gerar_pdf(
         )
     )
 
-    elementos.append(Spacer(1, 10))
+    #elementos.append(Spacer(1, 10))
 
     # Logo
 
@@ -106,9 +106,7 @@ def gerar_pdf(
 
         elementos.append(
             PdfImage(
-                f"images/{logo}",
-                width=3*cm,
-                height=3*cm
+                f"images/{logo}"
             )
         )
 
