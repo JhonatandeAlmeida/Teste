@@ -172,22 +172,22 @@ def gerar_pdf(
 
     # Produtos
 
-     elementos.append(
-            Paragraph(
-                f"<b>{canal}</b>",
-                styles["Heading2"]
+         elementos.append(
+                Paragraph(
+                    f"<b>{canal}</b>",
+                    styles["Heading2"]
+                )
             )
-        )
-
-        df_canal = produtos.copy()
-        
-        quinzenas = sorted(
-            df_canal["Quinzena"]
-            .dropna()
-            .astype(str)
-            .unique()
-        )
     
+            df_canal = produtos.copy()
+            
+            quinzenas = sorted(
+                df_canal["Quinzena"]
+                .dropna()
+                .astype(str)
+                .unique()
+            )
+        
         for quinzena in sorted(quinzenas):
 
             if quinzena == "PP":
