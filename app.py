@@ -77,7 +77,8 @@ def gerar_pdf(
     produtos,
     logo,
     canal,
-    negocio
+    negocio,
+    regional
 ):
 
     buffer = BytesIO()
@@ -92,7 +93,7 @@ def gerar_pdf(
 
     elementos.append(
         Paragraph(
-            f"<b>{titulo} | {canal} | {mes} {ano} </b>",
+            f"<b>{titulo} | {canal} {regional} | {mes} {ano} </b>",
             styles["Title"]
         )
     )
@@ -104,7 +105,7 @@ def gerar_pdf(
     try:
 
         elementos.append(
-            Image(
+            PdfImage(
                 f"images/{logo}",
                 width=3*cm,
                 height=3*cm
@@ -887,11 +888,12 @@ if st.button("📄 Exportar PDF"):
         logo=logo,
         canal=canal,
         negocio=negocio
+        regional=regional
     )
     
     st.download_button(
         "📄 Exportar PDF",
         data=pdf_file,
-        file_name=f"Calendario_{canal}_{mes}_{ano}.pdf",
+        file_name=f"Calendario_{canal}_{regional}_{mes}_{ano}.pdf",
         mime="application/pdf"
     )
