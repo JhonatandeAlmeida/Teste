@@ -89,18 +89,7 @@ def gerar_pdf(
 
     elementos = []
 
-    # Título
-
-    elementos.append(
-        Paragraph(
-            f"<b>{titulo} | {canal} {regional} | {mes} {ano} </b>",
-            styles["Title"]
-        )
-    )
-
-    #elementos.append(Spacer(1, 10))
-
-    # Logo
+        # Logo
 
     try:
         caminho_logo = f"images/{logo}"
@@ -123,7 +112,18 @@ def gerar_pdf(
     except:
         pass
 
-    elementos.append(Spacer(1, 10))
+    #elementos.append(Spacer(1, 10))
+
+    # Título
+
+    elementos.append(
+        Paragraph(
+            f"<b>{titulo} | {canal} {regional} | {mes} {ano} </b>",
+            styles["Title"]
+        )
+    )
+
+    #elementos.append(Spacer(1, 10))
 
     # Mecânica
 
