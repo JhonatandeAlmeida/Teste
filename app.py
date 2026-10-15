@@ -257,15 +257,18 @@ def gerar_pdf(
             dados,
             colWidths=[6*cm, 3*cm, 3*cm]
         )
-
-        tabela.setStyle(
-            TableStyle([
-                ("BACKGROUND", (0,0), (-1,0), colors.grey),
-                ("TEXTCOLOR", (0,0), (-1,0), colors.white),
-                ("GRID", (0,0), (-1,-1), 1, colors.black),
-                ("ALIGN", (0,0), (-1,-1), "CENTER"),
-            ])
+        estilo = [
+        ("BACKGROUND", (0,0), (-1,0), colors.HexColor("#005CB9")),
+        ("TEXTCOLOR", (0,0), (-1,0), colors.white),
+        ]
+         
+        for i in range(1, len(dados)):
+        if i % 2 == 0:
+        estilo.append(
+        ("BACKGROUND", (0,i), (-1,i), colors.whitesmoke)
         )
+         
+        tabela.setStyle(TableStyle(estilo))
 
         elementos.append(tabela)
         elementos.append(Spacer(1, 10))
