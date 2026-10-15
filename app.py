@@ -75,7 +75,8 @@ def gerar_pdf(
     ano,
     mecanica_mes,
     produtos,
-    logo
+    logo,
+    canal
 ):
 
     buffer = BytesIO()
@@ -90,7 +91,7 @@ def gerar_pdf(
 
     elementos.append(
         Paragraph(
-            f"<b>{titulo} | {mes} {ano}</b>",
+            f"<b>{titulo} | {canal} | {mes} {ano} </b>",
             styles["Title"]
         )
     )
@@ -171,18 +172,14 @@ def gerar_pdf(
 
     # Produtos
 
-    for canal in produtos["Canal"].dropna().unique():
-
-        elementos.append(
+     elementos.append(
             Paragraph(
                 f"<b>{canal}</b>",
                 styles["Heading2"]
             )
         )
 
-        df_canal = produtos[
-            produtos["Canal"] == canal
-        ]
+        df_canal = produtos.copy()
         
         quinzenas = sorted(
             df_canal["Quinzena"]
@@ -895,7 +892,8 @@ if st.button("📄 Gerar PDF"):
         ano=ano,
         mecanica_mes=mecanica_mes,
         produtos=produtos,
-        logo=logo
+        logo=logo,
+        canal=canal
     )
     
     st.download_button(
