@@ -188,77 +188,77 @@ def gerar_pdf(
         .unique()
     )
     
-        for quinzena in sorted(quinzenas):
+    for quinzena in sorted(quinzenas):
 
-            if quinzena == "PP":
-                elementos.append(
-                    Paragraph(
-                        f"<b>POWER PACKS</b>",
-                        styles["Heading3"]
-                    )
+        if quinzena == "PP":
+            elementos.append(
+                Paragraph(
+                    f"<b>POWER PACKS</b>",
+                    styles["Heading3"]
+                )
+            )
+        else:
+            elementos.append(
+                Paragraph(
+                    f"<b>{quinzena}ª QUINZENA</b>",
+                    styles["Heading3"]
+                )
+            )
+
+        dados = [
+            [
+                "SKU",
+                "DE",
+                "PARA"
+            ]
+        ]
+
+        produtos_q = df_canal[
+            df_canal["Quinzena"].astype(str) == str(quinzena)
+        ]
+
+        for _, row in produtos_q.iterrows():
+
+            if negocio == "MERCAPROMO":
+                dados.append(
+                    [
+                        str(row["SKU"]),
+                        f"R$ {row['De']}",
+                        f"R$ {row['Para']}"
+                    ]
+
                 )
             else:
-                elementos.append(
-                    Paragraph(
-                        f"<b>{quinzena}ª QUINZENA</b>",
-                        styles["Heading3"]
-                    )
+                    dados.append(
+                    [
+                        str(row["SKU"]),
+                        f"R$ {row['De']:.2f}",
+                        f"R$ {row['Para']:.2f}"
+                    ]
                 )
 
-            dados = [
-                [
-                    "SKU",
-                    "DE",
-                    "PARA"
-                ]
-            ]
+        tabela = Table(
+            dados,
+            colWidths=[6*cm, 3*cm, 3*cm]
+        )
 
-            produtos_q = df_canal[
-                df_canal["Quinzena"].astype(str) == str(quinzena)
-            ]
+        tabela.setStyle(
+            TableStyle([
+                ("BACKGROUND", (0,0), (-1,0), colors.grey),
+                ("TEXTCOLOR", (0,0), (-1,0), colors.white),
+                ("GRID", (0,0), (-1,-1), 1, colors.black),
+                ("ALIGN", (0,0), (-1,-1), "CENTER"),
+            ])
+        )
 
-            for _, row in produtos_q.iterrows():
+        elementos.append(tabela)
+        elementos.append(Spacer(1, 10))
 
-                if negocio == "MERCAPROMO":
-                    dados.append(
-                        [
-                            str(row["SKU"]),
-                            f"R$ {row['De']}",
-                            f"R$ {row['Para']}"
-                        ]
+doc.build(elementos)
 
-                    )
-                else:
-                        dados.append(
-                        [
-                            str(row["SKU"]),
-                            f"R$ {row['De']:.2f}",
-                            f"R$ {row['Para']:.2f}"
-                        ]
-                    )
+buffer.seek(0)
 
-            tabela = Table(
-                dados,
-                colWidths=[6*cm, 3*cm, 3*cm]
-            )
-
-            tabela.setStyle(
-                TableStyle([
-                    ("BACKGROUND", (0,0), (-1,0), colors.grey),
-                    ("TEXTCOLOR", (0,0), (-1,0), colors.white),
-                    ("GRID", (0,0), (-1,-1), 1, colors.black),
-                    ("ALIGN", (0,0), (-1,-1), "CENTER"),
-                ])
-            )
-
-            elementos.append(tabela)
-            elementos.append(Spacer(1, 10))
-
-    doc.build(elementos)
-
-    buffer.seek(0)
-
-    return buffer
+return buffer
 # ==================================================
 # CONFIGURAÇÃO
 # ==================================================
