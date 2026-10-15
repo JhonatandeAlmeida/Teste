@@ -111,13 +111,13 @@ def gerar_pdf(
     except:
         pass
 
+    elementos.append(logo_pdf)
     elementos.append(Spacer(1, 5))
 
     # Título
 
     cabecalho = Table(
         [[
-            logo_pdf,
             f"{titulo} | {canal} | {mes} {ano}"
         ]],
         colWidths=[3*cm, 15*cm]
