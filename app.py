@@ -126,6 +126,7 @@ def gerar_pdf(
             ("BACKGROUND", (0,0), (-1,-1), colors.HexColor("#005CB9")),
             ("TEXTCOLOR", (0,0), (-1,-1), colors.white),
             ("ALIGN", (0,0), (-1,-1), "CENTER"),
+            ("VALIGN", (0,0), (-1,-1), "MIDDLE"),
             ("FONTSIZE", (0,0), (-1,-1), 14),
         ])
     )
