@@ -76,7 +76,8 @@ def gerar_pdf(
     mecanica_mes,
     produtos,
     logo,
-    canal
+    canal,
+    negocio
 ):
 
     buffer = BytesIO()
@@ -254,11 +255,11 @@ def gerar_pdf(
         elementos.append(tabela)
         elementos.append(Spacer(1, 10))
 
-doc.build(elementos)
-
-buffer.seek(0)
-
-return buffer
+    doc.build(elementos)
+    
+    buffer.seek(0)
+    
+    return buffer
 # ==================================================
 # CONFIGURAÇÃO
 # ==================================================
@@ -893,7 +894,8 @@ if st.button("📄 Gerar PDF"):
         mecanica_mes=mecanica_mes,
         produtos=produtos,
         logo=logo,
-        canal=canal
+        canal=canal,
+        negocio=negocio
     )
     
     st.download_button(
