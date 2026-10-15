@@ -457,7 +457,8 @@ def mostrar_produtos(df_canal, canal, negocio):
 
 ARQUIVO = "data/calendario_promocional.xlsx"
 
-try:
+@st.cache_data
+def carregar_planilha():
 
     config_df = pd.read_excel(
         ARQUIVO,
@@ -478,6 +479,17 @@ try:
         ARQUIVO,
         sheet_name="PRODUTOS"
     )
+
+    return (
+        config_df,
+        cal_df,
+        mec_df,
+        prod_df
+    )
+
+try:
+
+    config_df, cal_df, mec_df, prod_df = carregar_planilha()
 
 except Exception as e:
 
