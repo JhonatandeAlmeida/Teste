@@ -112,7 +112,7 @@ def gerar_pdf(
     except:
         pass
 
-    #elementos.append(Spacer(1, 10))
+    elementos.append(Spacer(1, 5))
 
     # Título
 
@@ -123,7 +123,7 @@ def gerar_pdf(
         )
     )
 
-    #elementos.append(Spacer(1, 10))
+    elementos.append(Spacer(1, 5))
 
     # Mecânica
 
