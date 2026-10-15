@@ -103,10 +103,20 @@ def gerar_pdf(
     # Logo
 
     try:
+        caminho_logo = f"images/{logo}"
+        img = Image.open(caminho_logo)
+        largura_original, altura_original = img.size
+        largura_desejada = 3* cm
+
+        altura_proporcional = (
+            largura_desejada * altura_original / largura_original
+        )
 
         elementos.append(
             PdfImage(
-                f"images/{logo}"
+                caminho_logo,
+                width=largura_desejada,
+                height=altura_proporcional
             )
         )
 
