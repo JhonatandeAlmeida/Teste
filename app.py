@@ -118,7 +118,7 @@ def gerar_pdf(
 
     cabecalho = Table(
         [[
-            f"{titulo} | {canal} | {mes} {ano}"
+            f"{titulo} | {canal} _ {regional} | {mes} {ano}"
         ]],
         colWidths=[18*cm]
     )
@@ -138,7 +138,7 @@ def gerar_pdf(
     )
     
     elementos.append(cabecalho)
-    elementos.append(Spacer(1, 12))
+    elementos.append(Spacer(1, 5))
 
     # Mecânica
 
@@ -175,7 +175,7 @@ def gerar_pdf(
             )
         )
 
-    elementos.append(Spacer(1, 10))
+    elementos.append(Spacer(1, 5))
 
     elementos.append(
         Paragraph(
@@ -193,7 +193,7 @@ def gerar_pdf(
             )
         )
 
-    elementos.append(Spacer(1, 20))
+    elementos.append(Spacer(1, 5))
 
     # Produtos
 
@@ -274,7 +274,7 @@ def gerar_pdf(
         )
 
         elementos.append(tabela)
-        elementos.append(Spacer(1, 10))
+        elementos.append(Spacer(1, 5))
 
     doc.build(elementos)
     
