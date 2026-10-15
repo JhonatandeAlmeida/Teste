@@ -210,7 +210,7 @@ def gerar_pdf(
             [
                 "SKU",
                 "DE",
-                "PARA"
+                "POR"
             ]
         ]
 
