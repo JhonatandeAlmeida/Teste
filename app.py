@@ -457,7 +457,7 @@ def mostrar_produtos(df_canal, canal, negocio):
 
 ARQUIVO = "data/calendario_promocional.xlsx"
 
-@st.cache_data(tll=300)
+@st.cache_data(ttl=300)
 def carregar_planilha():
 
     config_df = pd.read_excel(
