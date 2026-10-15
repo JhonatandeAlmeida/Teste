@@ -128,6 +128,8 @@ def gerar_pdf(
             ("ALIGN", (0,0), (-1,-1), "CENTER"),
             ("VALIGN", (0,0), (-1,-1), "MIDDLE"),
             ("FONTSIZE", (0,0), (-1,-1), 14),
+            ("TOPPADDING", (0,0), (-1,-1), 8),
+            ("BOTTOMPADDING", (0,0), (-1,-1), 8),
         ])
     )
     
