@@ -101,8 +101,7 @@ def gerar_pdf(
             largura_desejada * altura_original / largura_original
         )
 
-        elementos.append(
-            PdfImage(
+        logo_pdf = PdfImage(
                 caminho_logo,
                 width=largura_desejada,
                 height=altura_proporcional
@@ -117,7 +116,10 @@ def gerar_pdf(
     # Título
 
     cabecalho = Table(
-        [[f"{titulo} | {canal} | {mes} {ano}"]],
+        [[
+            logo_pdf,
+            f"{titulo} | {canal} | {mes} {ano}"
+        ]],
         colWidths=[18*cm]
     )
     
