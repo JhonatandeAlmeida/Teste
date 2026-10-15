@@ -877,8 +877,6 @@ with col_direita:
             negocio
         )
 
-
-if st.button("📄 Exportar PDF"):
     pdf_file = gerar_pdf(
         titulo=titulo,
         mes=mes,
@@ -887,7 +885,7 @@ if st.button("📄 Exportar PDF"):
         produtos=produtos,
         logo=logo,
         canal=canal,
-        negocio=negocio
+        negocio=negocio,
         regional=regional
     )
     
