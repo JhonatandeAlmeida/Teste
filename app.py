@@ -28,10 +28,15 @@ import msal
 CLIENT_ID = "2609a149-fd2a-409a-a4b6-700c940a1f74"
 TENANT_ID = "cef04b19-7776-4a94-b89b-375c77a8f936"
 
-app = msal.PublicClientApplication(
-    CLIENT_ID,
-    authority=f"https://login.microsoftonline.com/{TENANT_ID}"
+login_url = (
+    f"https://login.microsoftonline.com/{TENANT_ID}/oauth2/v2.0/authorize"
+    f"?client_id={CLIENT_ID}"
+    f"&response_type=code"
+    f"&redirect_uri=https://testecalendario.streamlit.app"
+    f"&scope=openid profile email User.Read"
 )
+
+st.link_button("Entrar com Microsoft", login_url)
 
 @st.cache_data
 def imagem_para_base64(caminho):
