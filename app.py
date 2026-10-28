@@ -481,7 +481,14 @@ def mostrar_produtos(df_canal, canal, negocio):
 # LEITURA DA PLANILHA
 # ==================================================
 
-ARQUIVO = "data/calendario_promocional.xlsx"
+SHAREPOINT_URL="https://anheuserbuschinbev.sharepoint.com/sites/ProjetoPBI/Shared%20Documents/Pbix%20PN/calendario_promocional.xlsx"
+response = requests.get(
+    SHAREPOINT_URL,
+    headers=headers
+)
+
+#ARQUIVO = "data/calendario_promocional.xlsx"
+ARQUIVO = BytesIO(response.content)
 
 @st.cache_data(ttl=300)
 def carregar_planilha():
