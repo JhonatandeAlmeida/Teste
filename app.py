@@ -23,6 +23,16 @@ from reportlab.lib.styles import getSampleStyleSheet
 from components.calendar import gerar_calendario
 from components.styles import load_css
 
+import msal
+
+CLIENT_ID = "2609a149-fd2a-409a-a4b6-700c940a1f74"
+TENANT_ID = "cef04b19-7776-4a94-b89b-375c77a8f936"
+
+app = msal.PublicClientApplication(
+    CLIENT_ID,
+    authority=f"https://login.microsoftonline.com/{TENANT_ID}"
+)
+
 @st.cache_data
 def imagem_para_base64(caminho):
     with open(caminho, "rb") as img:
