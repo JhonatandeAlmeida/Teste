@@ -504,7 +504,7 @@ def mostrar_produtos(df_canal, canal, negocio):
 # LEITURA DA PLANILHA
 # ==================================================
 
-SHAREPOINT_URL="https://anheuserbuschinbev.sharepoint.com/sites/ProjetoPBI/Shared%20Documents/Pbix%20PN/calendario_promocional.xlsx"
+SHAREPOINT_URL = "https://anheuserbuschinbev.sharepoint.com/sites/ProjetoPBI/Shared%20Documents/Pbix%20PN/calendario_promocional.xlsx"
 response = requests.get(
     SHAREPOINT_URL,
     headers=headers
