@@ -27,9 +27,9 @@ from components.styles import load_css
 CLIENT_ID = "2609a149-fd2a-409a-a4b6-700c940a1f74"
 TENANT_ID = "cef04b19-7776-4a94-b89b-375c77a8f936"
 
-QUERY_PARAMS = st.query_params
+params = st.query_params
 
-if "code" not in QUERY_PARAMS:
+if "code" not in params:
 
     login_url = (
         f"https://login.microsoftonline.com/{TENANT_ID}/oauth2/v2.0/authorize"
@@ -39,8 +39,13 @@ if "code" not in QUERY_PARAMS:
         f"&scope=openid profile email User.Read"
     )
 
-    st.title("Calendário Promocional")
-    st.link_button("Entrar com Microsoft", login_url)
+    st.markdown(
+        f"""
+        <meta http-equiv="refresh" content="0; url={login_url}">
+        """,
+        unsafe_allow_html=True
+    )
+
     st.stop()
 
 st.success("Usuário autenticado")
