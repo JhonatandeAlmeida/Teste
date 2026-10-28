@@ -27,9 +27,7 @@ from components.styles import load_css
 CLIENT_ID = "2609a149-fd2a-409a-a4b6-700c940a1f74"
 TENANT_ID = "cef04b19-7776-4a94-b89b-375c77a8f936"
 
-params = st.query_params
-
-if "code" not in params:
+if "code" not in st.query_params:
 
     login_url = (
         f"https://login.microsoftonline.com/{TENANT_ID}/oauth2/v2.0/authorize"
@@ -39,16 +37,16 @@ if "code" not in params:
         f"&scope=openid profile email User.Read"
     )
 
-    st.markdown(
+    st.html(
         f"""
-        <meta http-equiv="refresh" content="0; url={login_url}">
-        """,
-        unsafe_allow_html=True
+        <script>
+            top.location.href = "{login_url}";
+        </script>
+        """
     )
 
     st.stop()
 
-st.success("Usuário autenticado")
 
 
 @st.cache_data
