@@ -24,10 +24,67 @@ from reportlab.lib.styles import getSampleStyleSheet
 from components.calendar import gerar_calendario
 from components.styles import load_css
 
-
 import streamlit as st
 import streamlit.components.v1 as components
 
+
+CLIENT_ID = "2609a149-fd2a-409a-a4b6-700c940a1f74"
+CLIENT_SECRET = st.secrets["CLIENT_SECRET"]
+TENANT_ID = "cef04b19-7776-4a94-b89b-375c77a8f936"
+
+REDIRECT_URI = "https://calendariogeoco.streamlit.app/"
+
+AUTHORITY = f"https://login.microsoftonline.com/{TENANT_ID}"
+
+SCOPES = [
+    "User.Read",
+    "Sites.Read.All",
+    "Files.Read.All"
+]
+
+app = msal.ConfidentialClientApplication(
+    CLIENT_ID,
+    authority=AUTHORITY,
+    client_credential=CLIENT_SECRET
+)
+
+params = st.query_params
+
+if "access_token" not in st.session_state:
+
+    if "code" not in params:
+
+        login_url = app.get_authorization_request_url(
+            SCOPES,
+            redirect_uri=REDIRECT_URI
+        )
+
+        st.link_button(
+            "Entrar com Microsoft",
+            login_url,
+            use_container_width=True
+        )
+
+        st.stop()
+
+    result = app.acquire_token_by_authorization_code(
+        params["code"],
+        scopes=SCOPES,
+        redirect_uri=REDIRECT_URI
+    )
+
+    if "access_token" not in result:
+
+        st.error(result)
+        st.stop()
+
+    st.session_state["access_token"] = result["access_token"]
+
+access_token = st.session_state["access_token"]
+
+headers = {
+    "Authorization": f"Bearer {access_token}"
+}
 
 @st.cache_data
 def imagem_para_base64(caminho):
