@@ -4,6 +4,7 @@ from PIL import Image
 import os
 import base64
 import msal
+import requests
 
 
 from io import BytesIO
