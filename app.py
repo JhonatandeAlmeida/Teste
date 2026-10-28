@@ -27,6 +27,8 @@ from components.styles import load_css
 import streamlit as st
 import streamlit.components.v1 as components
 
+import streamlit as st
+
 CLIENT_ID = "2609a149-fd2a-409a-a4b6-700c940a1f74"
 TENANT_ID = "cef04b19-7776-4a94-b89b-375c77a8f936"
 
@@ -40,19 +42,18 @@ if "code" not in st.query_params:
         f"&scope=openid profile email User.Read"
     )
 
-    components.html(
-        f""
+    st.markdown(
+        f"""
         <script>
-            window.top.location.href = "{login_url}";
+        window.parent.location.href = {login_url};
         </script>
-        "",
-        height=0,
+        """,
+        unsafe_allow_html=True,
     )
 
-    st.write("Redirecionando para Microsoft...")
+    st.write("Redirecionando para login Microsoft...")
     st.stop()
 
-st.success("Usuário autenticado")
 
 
 
