@@ -52,7 +52,7 @@ if "code" not in st.query_params:
     )
 
     st.write("Redirecionando para login Microsoft...")
-    st.stop()
+    #st.stop()
 
 
 
