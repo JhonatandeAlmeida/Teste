@@ -38,7 +38,7 @@ if "code" not in QUERY_PARAMS:
         f"https://login.microsoftonline.com/{TENANT_ID}/oauth2/v2.0/authorize"
         f"?client_id={CLIENT_ID}"
         f"&response_type=code"
-        f"&redirect_uri=https://testecalendario.streamlit.app"
+        f"&redirect_uri=https://calendariogeoco.streamlit.app/"
         f"&scope=openid profile email User.Read"
     )
 
