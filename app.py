@@ -3,6 +3,7 @@ import pandas as pd
 from PIL import Image
 import os
 import base64
+import msal
 
 
 from io import BytesIO
